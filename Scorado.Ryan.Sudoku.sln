@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorado.Ryan.Sudoku.Api", "Scorado.Ryan.Sudoku.Api\Scorado.Ryan.Sudoku.Api.csproj", "{8205A2F5-4E47-437F-BE30-5A833229391D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorado.Ryan.Sudoku.WpfUi", "Scorado.Ryan.Sudoku.WpfUi\Scorado.Ryan.Sudoku.WpfUi.csproj", "{6316B7C5-E511-4844-A9A0-D99D9922FDD6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorado.Ryan.Sudoku.Api.Tests", "Scorado.Ryan.Sudoku.Api.Tests\Scorado.Ryan.Sudoku.Api.Tests.csproj", "{FBCC90C6-3079-4C1D-A041-F1EC6DE3D5B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorado.Ryan.Sudoku.Game", "Scorado.Ryan.Sudoku.Game\Scorado.Ryan.Sudoku.Game.csproj", "{2A7994BF-185B-4C98-834E-47333DA1F4D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorado.Ryan.Sudoku.Game.Tests", "Scorado.Ryan.Sudoku.Game.Tests\Scorado.Ryan.Sudoku.Game.Tests.csproj", "{3387FFBB-B3C2-4359-9E94-82296AA4FDC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8205A2F5-4E47-437F-BE30-5A833229391D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8205A2F5-4E47-437F-BE30-5A833229391D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8205A2F5-4E47-437F-BE30-5A833229391D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8205A2F5-4E47-437F-BE30-5A833229391D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6316B7C5-E511-4844-A9A0-D99D9922FDD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6316B7C5-E511-4844-A9A0-D99D9922FDD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6316B7C5-E511-4844-A9A0-D99D9922FDD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6316B7C5-E511-4844-A9A0-D99D9922FDD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBCC90C6-3079-4C1D-A041-F1EC6DE3D5B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBCC90C6-3079-4C1D-A041-F1EC6DE3D5B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBCC90C6-3079-4C1D-A041-F1EC6DE3D5B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBCC90C6-3079-4C1D-A041-F1EC6DE3D5B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A7994BF-185B-4C98-834E-47333DA1F4D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A7994BF-185B-4C98-834E-47333DA1F4D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A7994BF-185B-4C98-834E-47333DA1F4D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A7994BF-185B-4C98-834E-47333DA1F4D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3387FFBB-B3C2-4359-9E94-82296AA4FDC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3387FFBB-B3C2-4359-9E94-82296AA4FDC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3387FFBB-B3C2-4359-9E94-82296AA4FDC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3387FFBB-B3C2-4359-9E94-82296AA4FDC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E38E4D5-C153-4451-BDFD-FF5AD6A651B2}
+	EndGlobalSection
+EndGlobal

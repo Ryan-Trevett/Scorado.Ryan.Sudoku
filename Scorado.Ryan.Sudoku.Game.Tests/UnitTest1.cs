@@ -81,7 +81,9 @@ namespace Scorado.Ryan.Sudoku.Game.Tests
             board[1, 8].Value = 2;
             board[1, 8].PuzzleCell = true;
 
-            var solver = new BruteForceSolver(board);
+            var solver = new BruteForceSolver();
+
+            solver.Board = board;
 
             solver.Solve();
 

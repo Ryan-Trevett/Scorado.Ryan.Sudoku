@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Scorado.Ryan.Sudoku.Game;
 
 namespace Scorado.Ryan.Sudoku.Api.Controllers
@@ -8,32 +7,43 @@ namespace Scorado.Ryan.Sudoku.Api.Controllers
     [ApiController]
     public class PuzzleCellController : ControllerBase
     {
-        // Addition params of user and specific board if using more than one
+        public PuzzleCellController(IBoardStorage boardStorage, Solver solver)
+        {
+            BoardStorage = boardStorage;
+            Solver = solver;
+        }
+
+        public IBoardStorage BoardStorage { get; internal set; }
+        public Solver Solver { get; internal set; }
+
+        //TODO: Addition params of user and specific board need to be added later
+        // Just asume one user and one board for now       
         public bool Post(int value, int xPosition, int yPosition)
         {
-            // Check params
+            //TODO: Check params
 
-            // Check if board initialised
-
-            var board = Storage.GetBoard();
-
-            
+            var board = BoardStorage.GetBoard();
 
             if (!board[xPosition, yPosition].PuzzleCell)
-            {
-                var solver = new BruteForceSolver(board);
+            {             
+                Solver.Board = board;
 
-                if (solver.CheckConstraints(xPosition, yPosition, value))
+                if (Solver.CheckConstraints(xPosition, yPosition, value))
                 {
                     board[xPosition, yPosition].Value = value;
                     board[xPosition, yPosition].PuzzleCell = true;
                 }
                 else
                 {
-                    return false;
-                    //lblMessage.Text = "Invalid cell value";
+                    // Invalid constraints
+                    return false;                    
                 }
-            }         
+            }
+            else
+            {
+                // Value already set
+                return false;
+            }
 
             return true;
         }

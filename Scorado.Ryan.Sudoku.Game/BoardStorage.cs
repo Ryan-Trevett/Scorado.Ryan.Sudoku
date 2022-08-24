@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Scorado.Ryan.Sudoku.Game
 {
-    public static class Storage
+    public class BoardStorage : IBoardStorage
     {
-        public static Board GetBoard()
+        public Board GetBoard()
         {
             var cache = MemoryCache.Default;
 
@@ -21,13 +21,15 @@ namespace Scorado.Ryan.Sudoku.Game
 
                 board = new Board(true);
 
-                cache.Set("ryan-first", board, policy);               
+                cache.Set("ryan-first", board, policy);
             }
 
             return board;
         }
 
-       
-
+        public void Clear()
+        {
+            MemoryCache.Default.Remove("ryan-first");
+        }
     }
 }

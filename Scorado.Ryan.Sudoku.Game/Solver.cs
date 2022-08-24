@@ -8,8 +8,7 @@ namespace Scorado.Ryan.Sudoku.Game
 {
     public abstract class Solver
     {
-        #region Member Variables
-        protected Board m_board;
+        #region Member Variables        
         protected ushort m_xPos = 0; // Used for the step by step solver to display on the UI
         protected ushort m_yPos = 0; // Used for the step by step solver to display on the UI
         #endregion
@@ -20,19 +19,11 @@ namespace Scorado.Ryan.Sudoku.Game
         /// </summary>
         protected Solver()
         {
-        }
-
-        /// <summary>
-        /// Takes a sudoku board as a parameter
-        /// </summary>
-        /// <param name="board_"></param>
-        protected Solver(Board board_)
-        {
-            m_board = board_;
-        }
+        }               
         #endregion
 
         #region Properties
+        public Board Board { get; set; }
         #endregion
 
         #region Methods
@@ -42,16 +33,7 @@ namespace Scorado.Ryan.Sudoku.Game
         public virtual void Solve()
         {
 
-        }
-
-        /// <summary>
-        /// Performs one step of the solving m_board.
-        /// </summary>
-        /// <returns>True when the puzzle is complete</returns>
-        public virtual bool SolveStep()
-        {
-            return false;
-        }
+        }        
 
         /// <summary>
         /// Resets the position of the current seach
@@ -110,7 +92,7 @@ namespace Scorado.Ryan.Sudoku.Game
         /// <returns></returns>
         protected virtual CellCollection FindCollection(int xPos_, int yPos_, CellCollectionTypes collectionType_)
         {
-            foreach (CellCollection col in m_board.Collection)
+            foreach (CellCollection col in Board.Collection)
             {
                 if (col.CollectionType == collectionType_)
                 {

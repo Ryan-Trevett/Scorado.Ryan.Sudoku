@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <StackPanel>
+            <TextBox x:Name="xPosition"></TextBox>
+            <TextBox x:Name="yPosition"></TextBox>
+            <TextBox x:Name="puzzleValue"></TextBox>
+            <Button x:Name="get" Content="Set" Click="Button_Click"></Button>
+            <DataGrid />
+            <Button x:Name="set" Content="Get" Click="Button_Click"></Button>
+        </StackPanel>
     </Grid>
 </Window>

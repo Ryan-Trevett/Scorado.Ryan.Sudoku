@@ -21,53 +21,12 @@ namespace Scorado.Ryan.Sudoku.Game
 
         }
 
-        /// <summary>
-        /// Takes a board
-        /// </summary>
-        /// <param name="board_"></param>
-        public BruteForceSolver(Board board_)
-            : base(board_)
-        {
-
-        }
-        #endregion
+       #endregion
 
         #region Properties
         #endregion
 
-        #region Methods
-        /// <summary>
-        /// Sovles the set puzzle one step at a time
-        /// The backtracking (no matter how many cells are backtracked) counts as one step
-        /// </summary>
-        /// <returns></returns>
-        public override bool SolveStep()
-        {
-            if (AttemptToSetCell(m_xPos, m_yPos, 1) == AttemptSetReturnTypes.False)
-            {
-                ResetTriedValues(m_xPos, m_yPos);
-
-                // Move back a cell and increment - backtrack
-                IncrementPreviousCell(ref m_xPos, ref m_yPos);
-            }
-
-            if (m_xPos == 8 && m_yPos == 8)
-            {
-                return true;
-            }
-
-            if (!(m_xPos == 8))
-            {
-                m_xPos++;
-            }
-            else
-            {
-                m_xPos = 0;
-                m_yPos++;
-            }
-
-            return false;
-        }
+        #region Methods       
 
 
         /// <summary>
@@ -125,9 +84,9 @@ namespace Scorado.Ryan.Sudoku.Game
 
             ushort? valueToTry;
 
-            if (m_board[xPos_, yPos_].Value != 9)
+            if (Board[xPos_, yPos_].Value != 9)
             {
-                valueToTry = (ushort?)(m_board[xPos_, yPos_].Value + 1);
+                valueToTry = (ushort?)(Board[xPos_, yPos_].Value + 1);
             }
             else
             {
@@ -156,18 +115,18 @@ namespace Scorado.Ryan.Sudoku.Game
         {
             // If this is a cell that is part of the puzzle itself
             // it must be correct so just return
-            if (m_board[xPos_, yPos_].PuzzleCell)
+            if (Board[xPos_, yPos_].PuzzleCell)
                 return AttemptSetReturnTypes.Puzzle;
 
             for (ushort n = 0; n < 9; n++)
             {
                 if (CheckConstraints(xPos_, yPos_, value_))
                 {
-                    m_board[xPos_, yPos_].Value = value_;
+                    Board[xPos_, yPos_].Value = value_;
 
                     // If after setting the value above it was actually set to null
                     // this means the value has already been tried and we need to backtrack
-                    if (m_board[xPos_, yPos_].Value == null)
+                    if (Board[xPos_, yPos_].Value == null)
                     {
                         ResetTriedValues(xPos_, yPos_);
 
@@ -187,7 +146,7 @@ namespace Scorado.Ryan.Sudoku.Game
                 }
             }
 
-            m_board[xPos_, yPos_].Value = null;
+            Board[xPos_, yPos_].Value = null;
 
             return AttemptSetReturnTypes.False;
         }
@@ -199,7 +158,7 @@ namespace Scorado.Ryan.Sudoku.Game
         /// <param name="yPos_"></param>
         private void ResetTriedValues(ushort xPos_, ushort yPos_)
         {
-            m_board[xPos_, yPos_].ResetTriedValues();
+            Board[xPos_, yPos_].ResetTriedValues();
         }
         #endregion
     }

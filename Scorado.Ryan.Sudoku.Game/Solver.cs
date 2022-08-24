@@ -70,7 +70,7 @@ namespace Scorado.Ryan.Sudoku.Game
         /// <param name="yPos_"></param>
         /// <param name="value_"></param>
         /// <returns></returns>
-        public virtual bool CheckConstraints(ushort xPos_, ushort yPos_, ushort? value_)
+        public virtual bool CheckConstraints(int xPos_, int yPos_, int? value_)
         {
             if (!CheckParticularConstraint(xPos_, yPos_, value_, CellCollectionTypes.Rows))
                 return false;
@@ -93,7 +93,7 @@ namespace Scorado.Ryan.Sudoku.Game
         /// <param name="value_"></param>
         /// <param name="collectionType_"></param>
         /// <returns></returns>
-        protected virtual bool CheckParticularConstraint(ushort xPos_, ushort yPos_, ushort? value_, CellCollectionTypes collectionType_)
+        protected virtual bool CheckParticularConstraint(int xPos_, int yPos_, int? value_, CellCollectionTypes collectionType_)
         {
             CellCollection rowCollection = FindCollection(xPos_, yPos_, collectionType_);
 
@@ -108,7 +108,7 @@ namespace Scorado.Ryan.Sudoku.Game
         /// <param name="yPos_"></param>
         /// <param name="collectionType_"></param>
         /// <returns></returns>
-        protected virtual CellCollection FindCollection(ushort xPos_, ushort yPos_, CellCollectionTypes collectionType_)
+        protected virtual CellCollection FindCollection(int xPos_, int yPos_, CellCollectionTypes collectionType_)
         {
             foreach (CellCollection col in m_board.Collection)
             {
@@ -131,7 +131,7 @@ namespace Scorado.Ryan.Sudoku.Game
         /// <param name="collection_"></param>
         /// <param name="value_"></param>
         /// <returns></returns>
-        protected virtual bool CheckValueGoodInCollection(CellCollection collection_, ushort? value_)
+        protected virtual bool CheckValueGoodInCollection(CellCollection collection_, int? value_)
         {
             for (ushort i = 0; i < 9; i++)
             {

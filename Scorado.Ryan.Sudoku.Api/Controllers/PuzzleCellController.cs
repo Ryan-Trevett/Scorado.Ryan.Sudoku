@@ -15,9 +15,25 @@ namespace Scorado.Ryan.Sudoku.Api.Controllers
 
             // Check if board initialised
 
-            var one = Storage.GetBoard();
-            var two = Storage.GetBoard();
+            var board = Storage.GetBoard();
 
+            
+
+            if (!board[xPosition, yPosition].PuzzleCell)
+            {
+                var solver = new BruteForceSolver(board);
+
+                if (solver.CheckConstraints(xPosition, yPosition, value))
+                {
+                    board[xPosition, yPosition].Value = value;
+                    board[xPosition, yPosition].PuzzleCell = true;
+                }
+                else
+                {
+                    return false;
+                    //lblMessage.Text = "Invalid cell value";
+                }
+            }         
 
             return true;
         }

@@ -18,7 +18,7 @@ namespace Scorado.Ryan.Sudoku.Game
                 InitialiseEmptyBoard();
         }
 
-        public Cell this[ushort xPos_, ushort yPos_]
+        public Cell this[int xPos_, int yPos_]
         {
             get
             {
@@ -175,6 +175,18 @@ namespace Scorado.Ryan.Sudoku.Game
 
                 m_cellCollections[n] = new CellCollection();
                 m_cellCollections[n].SetCells(box, collectionIndex, CellCollectionTypes.Boxes);
+            }
+        }
+
+        public void SetPuzzleCells()
+        {
+            for (int yPos = 0; yPos < 9; yPos++)
+            {
+                for (int xPos = 0; xPos < 9; xPos++)
+                {
+                    if (m_board[xPos, yPos].Value != null)
+                        m_board[xPos, yPos].PuzzleCell = true;
+                }
             }
         }
     }

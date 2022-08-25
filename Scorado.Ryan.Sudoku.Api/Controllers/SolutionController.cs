@@ -38,10 +38,8 @@ namespace Scorado.Ryan.Sudoku.Api.Controllers
         /// <summary>
         /// JSON serialiser doesn't support multidimensional arrays? convert to jagged array instead
         /// Possibly just the serialiser I'm using
-        /// Also strip out unwanted data and use SharedCell
-        /// </summary>
-        /// <param name="board"></param>
-        /// <returns></returns>
+        /// Also strip out unwanted data and use int?[][]
+        /// </summary>        
         private int?[][] ConvertBoardForResult(Board board)
         {
             int?[][] result = new int?[9][];

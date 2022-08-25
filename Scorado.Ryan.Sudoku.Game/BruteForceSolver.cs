@@ -31,8 +31,7 @@
                     }
                 }
             }
-        }
-        
+        }        
         private void IncrementPreviousCell(ref int xPos_, ref int yPos_)
         {
             if (xPos_ == 0 && yPos_ == 0)

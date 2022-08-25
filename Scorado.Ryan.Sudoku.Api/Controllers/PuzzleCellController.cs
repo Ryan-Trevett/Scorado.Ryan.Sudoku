@@ -20,7 +20,7 @@ namespace Scorado.Ryan.Sudoku.Api.Controllers
         // Just asume one user and one board for now       
         public bool Post(int value, int xPosition, int yPosition)
         {
-            //TODO: Check params
+            //TODO: Extra check params here
 
             var board = BoardStorage.GetBoard();
 

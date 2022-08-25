@@ -151,7 +151,6 @@
                 cellCollections[n].SetCells(box, collectionIndex, CellCollectionTypes.Boxes);
             }
         }
-
         public void SetPuzzleCells()
         {
             for (int yPos = 0; yPos < 9; yPos++)

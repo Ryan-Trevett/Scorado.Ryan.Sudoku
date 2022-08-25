@@ -1,57 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Scorado.Ryan.Sudoku.Game
+﻿namespace Scorado.Ryan.Sudoku.Game
 {
     public abstract class Solver
     {
-        #region Member Variables        
-        protected ushort m_xPos = 0; // Used for the step by step solver to display on the UI
-        protected ushort m_yPos = 0; // Used for the step by step solver to display on the UI
-        #endregion
-
-        #region Constructors
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        protected Solver()
+        public Solver()
         {
-        }               
-        #endregion
-
-        #region Properties
-        public Board Board { get; set; }
-        #endregion
-
-        #region Methods
-        /// <summary>
-        /// Solves the m_board in one go. Must be overriden in an inheriated class
-        /// </summary>
-        public virtual void Solve()
-        {
-
-        }        
-
-        /// <summary>
-        /// Resets the position of the current seach
-        /// Used with the SolveStep method
-        /// </summary>
-        public virtual void ResetPositions()
-        {
-            m_xPos = 0;
-            m_yPos = 0;
+            Board = new Board(false);
         }
 
-        /// <summary>
-        /// Check to see if setting the value_ to the passed co-ordinates will break any of the game constraints
-        /// </summary>
-        /// <param name="xPos_"></param>
-        /// <param name="yPos_"></param>
-        /// <param name="value_"></param>
-        /// <returns></returns>
+        public Board Board { get; set; }
+
+        public abstract void Solve();          
+        
         public virtual bool CheckConstraints(int xPos_, int yPos_, int? value_)
         {
             if (!CheckParticularConstraint(xPos_, yPos_, value_, CellCollectionTypes.Rows))
@@ -63,18 +22,13 @@ namespace Scorado.Ryan.Sudoku.Game
             if (!CheckParticularConstraint(xPos_, yPos_, value_, CellCollectionTypes.Boxes))
                 return false;
 
-
             return true;
         }
 
         /// <summary>
         /// Used to help check game constrainsts for any cell collection type
-        /// </summary>
-        /// <param name="xPos_"></param>
-        /// <param name="yPos_"></param>
-        /// <param name="value_"></param>
-        /// <param name="collectionType_"></param>
-        /// <returns></returns>
+        /// </summary>      
+       
         protected virtual bool CheckParticularConstraint(int xPos_, int yPos_, int? value_, CellCollectionTypes collectionType_)
         {
             CellCollection rowCollection = FindCollection(xPos_, yPos_, collectionType_);
@@ -85,11 +39,7 @@ namespace Scorado.Ryan.Sudoku.Game
         /// <summary>
         /// Returns the cell collection that the passed cell is in
         /// Dependant on the cell collection type passed
-        /// </summary>
-        /// <param name="xPos_"></param>
-        /// <param name="yPos_"></param>
-        /// <param name="collectionType_"></param>
-        /// <returns></returns>
+        /// </summary>        
         protected virtual CellCollection FindCollection(int xPos_, int yPos_, CellCollectionTypes collectionType_)
         {
             foreach (CellCollection col in Board.Collection)
@@ -104,15 +54,14 @@ namespace Scorado.Ryan.Sudoku.Game
                 }
             }
 
+#pragma warning disable CS8603 // Possible null reference return.
             return null;
+#pragma warning restore CS8603 // Possible null reference return.
         }
 
         /// <summary>
         /// Checks the value does not have a duplicate in the current collection
-        /// </summary>
-        /// <param name="collection_"></param>
-        /// <param name="value_"></param>
-        /// <returns></returns>
+        /// </summary>       
         protected virtual bool CheckValueGoodInCollection(CellCollection collection_, int? value_)
         {
             for (ushort i = 0; i < 9; i++)
@@ -122,7 +71,6 @@ namespace Scorado.Ryan.Sudoku.Game
             }
 
             return true;
-        }
-        #endregion
+        }       
     }
 }

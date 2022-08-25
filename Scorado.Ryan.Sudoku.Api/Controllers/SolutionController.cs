@@ -37,6 +37,7 @@ namespace Scorado.Ryan.Sudoku.Api.Controllers
 
         /// <summary>
         /// JSON serialiser doesn't support multidimensional arrays? convert to jagged array instead
+        /// Possibly just the serialiser I'm using
         /// Also strip out unwanted data and use SharedCell
         /// </summary>
         /// <param name="board"></param>
@@ -58,7 +59,7 @@ namespace Scorado.Ryan.Sudoku.Api.Controllers
             {
                 for (int j = 0; j < 9; j++)
                 {                    
-                    result[i][j] = board.InnerBoard[i, j].Value;                   
+                    result[i][j] = board.BoardCells[i, j].Value;                   
                 }
             }
 

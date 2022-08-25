@@ -1,54 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Scorado.Ryan.Sudoku.Game
+﻿namespace Scorado.Ryan.Sudoku.Game
 {
     public  class BruteForceSolver : Solver
     {
-        #region Member Variables
-        #endregion
-
-        #region Constructors
-        /// <summary>
-        /// Default constructor
-        /// </summary>
         public BruteForceSolver()
             : base()
         {
 
-        }
-
-       #endregion
-
-        #region Properties
-        #endregion
-
-        #region Methods       
-
-
-        /// <summary>
-        /// Attempts to solve the puzzle in one go
-        /// </summary>
+        }   
+        
         public override void Solve()
-        {
-            base.Solve();
-
+        {  
             BruteForceSolve();
         }
 
         /// <summary>
-        /// Controlling method for solving the puzzle in one go using the backtracking algorithm
+        /// Controlling method for solving the puzzle in one go using a backtracking algorithm
         /// </summary>
         private void BruteForceSolve()
         {
-            for (ushort yPos = 0; yPos < 9; yPos++)
+            for (int yPos = 0; yPos < 9; yPos++)
             {
-                for (ushort xPos = 0; xPos < 9; xPos++)
+                for (int xPos = 0; xPos < 9; xPos++)
                 {
-                    if (AttemptToSetCell(xPos, yPos, 1) == AttemptSetReturnTypes.False)
+                    if (AttemptToSetCell(xPos, yPos, 1) == AttemptToSetReturnTypes.False)
                     {
                         ResetTriedValues(xPos, yPos);
 
@@ -58,13 +32,8 @@ namespace Scorado.Ryan.Sudoku.Game
                 }
             }
         }
-
-        /// <summary>
-        /// Backtrack
-        /// </summary>
-        /// <param name="xPos_"></param>
-        /// <param name="yPos_"></param>
-        private void IncrementPreviousCell(ref ushort xPos_, ref ushort yPos_)
+        
+        private void IncrementPreviousCell(ref int xPos_, ref int yPos_)
         {
             if (xPos_ == 0 && yPos_ == 0)
             {
@@ -82,11 +51,11 @@ namespace Scorado.Ryan.Sudoku.Game
                 yPos_ -= 1;
             }
 
-            ushort? valueToTry;
+            int? valueToTry;
 
             if (Board[xPos_, yPos_].Value != 9)
             {
-                valueToTry = (ushort?)(Board[xPos_, yPos_].Value + 1);
+                valueToTry = (Board[xPos_, yPos_].Value + 1);
             }
             else
             {
@@ -94,7 +63,7 @@ namespace Scorado.Ryan.Sudoku.Game
             }
 
             // Check the new value and if it fails carry on backwards
-            if (AttemptToSetCell(xPos_, yPos_, valueToTry) != AttemptSetReturnTypes.True)
+            if (AttemptToSetCell(xPos_, yPos_, valueToTry) != AttemptToSetReturnTypes.True)
             {
                 ResetTriedValues(xPos_, yPos_);
 
@@ -102,21 +71,13 @@ namespace Scorado.Ryan.Sudoku.Game
                 IncrementPreviousCell(ref xPos_, ref yPos_);
             }
         }
-
-        /// <summary>
-        /// Attempts to set a cell with a new value
-        /// Carrys out checks to see whether this is a valid value for the cell
-        /// </summary>
-        /// <param name="xPos_"></param>
-        /// <param name="yPos_"></param>
-        /// <param name="value_"></param>
-        /// <returns></returns>
-        private AttemptSetReturnTypes AttemptToSetCell(ushort xPos_, ushort yPos_, ushort? value_)
+        
+        private AttemptToSetReturnTypes AttemptToSetCell(int xPos_, int yPos_, int? value_)
         {
             // If this is a cell that is part of the puzzle itself
             // it must be correct so just return
             if (Board[xPos_, yPos_].PuzzleCell)
-                return AttemptSetReturnTypes.Puzzle;
+                return AttemptToSetReturnTypes.Puzzle;
 
             for (ushort n = 0; n < 9; n++)
             {
@@ -130,10 +91,10 @@ namespace Scorado.Ryan.Sudoku.Game
                     {
                         ResetTriedValues(xPos_, yPos_);
 
-                        return AttemptSetReturnTypes.False;
+                        return AttemptToSetReturnTypes.False;
                     }
 
-                    return AttemptSetReturnTypes.True;
+                    return AttemptToSetReturnTypes.True;
                 }
 
                 if (value_ == 9)
@@ -148,18 +109,12 @@ namespace Scorado.Ryan.Sudoku.Game
 
             Board[xPos_, yPos_].Value = null;
 
-            return AttemptSetReturnTypes.False;
+            return AttemptToSetReturnTypes.False;
         }
-
-        /// <summary>
-        /// Once a cell has been backtracked the list of values already tried for it needs to be reset
-        /// </summary>
-        /// <param name="xPos_"></param>
-        /// <param name="yPos_"></param>
-        private void ResetTriedValues(ushort xPos_, ushort yPos_)
+       
+        private void ResetTriedValues(int xPos_, int yPos_)
         {
             Board[xPos_, yPos_].ResetTriedValues();
-        }
-        #endregion
+        }       
     }
 }

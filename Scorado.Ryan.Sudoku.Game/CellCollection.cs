@@ -1,30 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Scorado.Ryan.Sudoku.Game
+﻿namespace Scorado.Ryan.Sudoku.Game
 {
     public class CellCollection
     {
-        private Cell[] m_collection = new Cell[9];      // The acuall collection of cells
-        private CellCollectionTypes m_collectionType;   // Column, Row or Box
-        private int m_collectionIndex = 0;           // 0 - 8 position of the collection on the board
-
-        public CellCollection(Cell[] collection_, ushort collectionIndex_, CellCollectionTypes collectionType_)
-        {
-            SetCells(collection_, collectionIndex_, collectionType_);
-        }
-
-        public CellCollection()
-        { }
+        private Cell[] collection = new Cell[9];      // The acuall collection of cells
+        private CellCollectionTypes collectionType;   // Column, Row or Box
+        private int collectionIndex = 0;              // 0 - 8 position of the collection on the board   
 
         public Cell this[ushort index]
         {
             get
             {
-                return m_collection[index];
+                return collection[index];
             }
         }
 
@@ -32,7 +18,7 @@ namespace Scorado.Ryan.Sudoku.Game
         {
             get
             {
-                return m_collectionIndex;
+                return collectionIndex;
             }
         }
 
@@ -40,7 +26,7 @@ namespace Scorado.Ryan.Sudoku.Game
         {
             get
             {
-                return m_collectionType;
+                return collectionType;
             }
         }
 
@@ -52,11 +38,11 @@ namespace Scorado.Ryan.Sudoku.Game
             if (collectionIndex_ > 8)
                 throw new Exception("Cell collection assignment out of range");
 
-            m_collection = collection_;
+            collection = collection_;
 
-            m_collectionIndex = collectionIndex_;
+            collectionIndex = collectionIndex_;
 
-            m_collectionType = collectionType_;
+            collectionType = collectionType_;
         }
     }
 }

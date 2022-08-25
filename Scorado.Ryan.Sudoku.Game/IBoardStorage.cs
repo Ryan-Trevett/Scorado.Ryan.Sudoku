@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace Scorado.Ryan.Sudoku.Game
+﻿namespace Scorado.Ryan.Sudoku.Game
 {
     public interface IBoardStorage
     {

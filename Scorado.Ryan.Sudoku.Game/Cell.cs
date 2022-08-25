@@ -3,7 +3,7 @@
     public class Cell
     {
         private int? cellValue = null;
-        private List<int?> triedValues = new List<int?>();
+        private readonly List<int?> triedValues = new();
 
         public Cell(int xPos_, int yPos_)
         {
@@ -20,7 +20,7 @@
             }
             set
             {
-                if (value > 9 || value == 0)
+                if (value > 9 || value < 1)
                 {
                     throw new Exception("Cell assignment out of range");
                 }

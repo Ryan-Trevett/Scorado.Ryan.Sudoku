@@ -34,15 +34,13 @@ namespace Scorado.Ryan.Sudoku.Api.Controllers
                     board[xPosition, yPosition].PuzzleCell = true;
                 }
                 else
-                {
-                    // Invalid constraints
-                    return false;                    
+                {              
+                    throw new Exception("Invalid constraints");                                   
                 }
             }
             else
-            {
-                // Value already set
-                return false;
+            {             
+                throw new Exception("Value already set");
             }
 
             return true;

@@ -7,11 +7,21 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <StackPanel>
-            <TextBox x:Name="xPosition"></TextBox>
-            <TextBox x:Name="yPosition"></TextBox>
-            <TextBox x:Name="puzzleValue"></TextBox>
+        <StackPanel Orientation="Vertical">
+            <UniformGrid Columns="2">
+                <Label Content="X position in grid"></Label>
+                <TextBox x:Name="xPosition"></TextBox>
+            </UniformGrid>
+            <UniformGrid Columns="2">
+                <Label Content="Y position in grid"></Label>
+                <TextBox x:Name="yPosition"></TextBox>
+            </UniformGrid>
+            <UniformGrid Columns="2">
+                <Label Content="Puzzle value of cell"></Label>
+                <TextBox x:Name="puzzleValue"></TextBox>
+            </UniformGrid> 
             <Button x:Name="get" Content="Set" Click="Button_Click"></Button>
+            <Label x:Name="setResult"></Label>
             <DataGrid x:Name="grid"/>
             <Button x:Name="set" Content="Get" Click="Button_Click"></Button>
         </StackPanel>

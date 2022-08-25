@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorado.Ryan.Sudoku.WpfUi",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorado.Ryan.Sudoku.Api.Tests", "Scorado.Ryan.Sudoku.Api.Tests\Scorado.Ryan.Sudoku.Api.Tests.csproj", "{FBCC90C6-3079-4C1D-A041-F1EC6DE3D5B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorado.Ryan.Sudoku.Game", "Scorado.Ryan.Sudoku.Game\Scorado.Ryan.Sudoku.Game.csproj", "{2A7994BF-185B-4C98-834E-47333DA1F4D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorado.Ryan.Sudoku.Game", "Scorado.Ryan.Sudoku.Game\Scorado.Ryan.Sudoku.Game.csproj", "{2A7994BF-185B-4C98-834E-47333DA1F4D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorado.Ryan.Sudoku.Game.Tests", "Scorado.Ryan.Sudoku.Game.Tests\Scorado.Ryan.Sudoku.Game.Tests.csproj", "{3387FFBB-B3C2-4359-9E94-82296AA4FDC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorado.Ryan.Sudoku.Game.Tests", "Scorado.Ryan.Sudoku.Game.Tests\Scorado.Ryan.Sudoku.Game.Tests.csproj", "{3387FFBB-B3C2-4359-9E94-82296AA4FDC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

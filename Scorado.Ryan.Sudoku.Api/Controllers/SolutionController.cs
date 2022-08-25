@@ -22,7 +22,7 @@ namespace Scorado.Ryan.Sudoku.Api.Controllers
         /// TODO: There is currently only one problem in memory
         /// </summary>
         /// <returns></returns>
-        public Cell[][] Get()
+        public int?[][] Get()
         {  
             var board = BoardStorage.GetBoard();
 
@@ -30,33 +30,39 @@ namespace Scorado.Ryan.Sudoku.Api.Controllers
 
             Solver.Solve();
 
-            BoardStorage.Clear();            
+            BoardStorage.Clear();
 
-            // JSON doesn't support multidimensional arrays? convert to jagged array instead
-            Cell[][] result = new Cell[9][];
-            result[0] = new Cell[9];
-            result[1] = new Cell[9];
-            result[2] = new Cell[9];
-            result[3] = new Cell[9];
-            result[4] = new Cell[9];
-            result[5] = new Cell[9];
-            result[6] = new Cell[9];
-            result[7] = new Cell[9];
-            result[8] = new Cell[9];
+            return ConvertBoardForResult(board);     
+        }
+
+        /// <summary>
+        /// JSON serialiser doesn't support multidimensional arrays? convert to jagged array instead
+        /// Also strip out unwanted data and use SharedCell
+        /// </summary>
+        /// <param name="board"></param>
+        /// <returns></returns>
+        private int?[][] ConvertBoardForResult(Board board)
+        {
+            int?[][] result = new int?[9][];
+            result[0] = new int?[9];
+            result[1] = new int?[9];
+            result[2] = new int?[9];
+            result[3] = new int?[9];
+            result[4] = new int?[9];
+            result[5] = new int?[9];
+            result[6] = new int?[9];
+            result[7] = new int?[9];
+            result[8] = new int?[9];
 
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
-                {
-                    result[i][j] = board.InnerBoard[i, j];
+                {                    
+                    result[i][j] = board.InnerBoard[i, j].Value;                   
                 }
             }
 
-
-
             return result;
-
-            //return board.InnerBoard.Con;
         }
     }
 }

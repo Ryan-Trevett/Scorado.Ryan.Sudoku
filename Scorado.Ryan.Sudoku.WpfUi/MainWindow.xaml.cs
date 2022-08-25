@@ -1,20 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Scorado.Ryan.Sudoku.Game;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+using System.Data;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Scorado.Ryan.Sudoku.WpfUi
 {
@@ -58,7 +46,36 @@ namespace Scorado.Ryan.Sudoku.WpfUi
 
                 var customerJsonString = responseContent.ReadAsStringAsync().Result;
 
-                var cust = JsonConvert.DeserializeObject<Cell[][]>(customerJsonString);
+                var cust = JsonConvert.DeserializeObject<int[][]>(customerJsonString);
+
+
+                System.Data.DataTable dt = new DataTable("MyTable");
+                dt.Columns.Add(string.Empty, typeof(int));
+                dt.Columns.Add(string.Empty, typeof(int));
+                dt.Columns.Add(string.Empty, typeof(int));
+                dt.Columns.Add(string.Empty, typeof(int));
+                dt.Columns.Add(string.Empty, typeof(int));
+                dt.Columns.Add(string.Empty, typeof(int));
+                dt.Columns.Add(string.Empty, typeof(int));
+                dt.Columns.Add(string.Empty, typeof(int));
+                dt.Columns.Add(string.Empty, typeof(int));
+                               
+                for (int j = 8; j > -1; j--)
+                {
+                    dt.Rows.Add(cust[0][j], cust[1][j], cust[2][j], cust[3][j], cust[4][j], cust[5][j], cust[6][j], cust[7][j], cust[8][j]);
+                }
+                              
+
+                grid.ItemsSource = dt.DefaultView;
+
+
+
+                //DataGridTextColumn textColumn = new DataGridTextColumn();
+                //textColumn.Header = "First Name";
+                //textColumn.Binding = new Binding("FirstName");
+                //grid.Columns.Add(textColumn);
+
+                //grid.Items.Add()
 
                 if (response.IsSuccessStatusCode)
                 {
